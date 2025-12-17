@@ -1,12 +1,28 @@
-// src/server.ts
 import app from "./app";
-import dotenv from 'dotenv'
+import { env } from "./config/env";
 import { logger } from "./utils/logger";
+import { checkDbConnection } from "./config/db";
+import { checkRedisConnection } from "./config/redis";
 
-dotenv.config()
+const startServer = async () => {
+  try {
+    logger.info("Starting SafeKey backend...");
 
-const PORT = process.env.PORT || 4000;
+    // Check database connection
+    await checkDbConnection();
 
-app.listen(PORT, () => {
-  logger.warn(`SafeKey backend running on port ${PORT} http://localhost:${PORT}`);    //used warn just for easy visiblity
-});
+    // Check redis connection (Upstash)
+    await checkRedisConnection();
+
+    app.listen(env.PORT, () => {
+      logger.warn(
+        `SafeKey backend running on port ${env.PORT} : http://localhost:${env.PORT}`
+      );
+    });
+  } catch (error) {
+    logger.error(error," Failed to start server");
+    process.exit(1);
+  }
+};
+
+startServer();

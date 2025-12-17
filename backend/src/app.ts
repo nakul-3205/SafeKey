@@ -10,5 +10,8 @@ app.use(express.json({limit:32}),express.urlencoded({limit:32}))
 app.use(errorMiddleware)
 app.use(requestLogger)
 
+app.get("/health", (_, res) => {
+    res.json({ status: "ok" });
+});
 
 export default app
