@@ -17,9 +17,7 @@ export const users = pgTable("users", {
   // Hashed refresh token for logout / rotation
   refresh_token_hash: text("refresh_token_hash"),
 
-  // Password reset token (hashed)
-  reset_token_hash: text("reset_token_hash"),
-  reset_token_expires: timestamp("reset_token_expires", { withTimezone: true }),
+
 
   // Timestamps
   created_at: timestamp("created_at", { withTimezone: true }).defaultNow(),
