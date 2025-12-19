@@ -17,18 +17,13 @@ export const logger = pino({
         },
       },
 
-  /**
-   * Custom serializers for clean error logs
-   */
+
   serializers: {
     err: pino.stdSerializers.err,
   },
 });
 
-/**
- * Helper for logging errors with stack traces
- * Usage: loggerError(error, "optional message")
- */
+
 export const loggerError = (error: unknown, message?: string) => {
   if (error instanceof Error) {
     logger.error(
