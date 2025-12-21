@@ -8,10 +8,8 @@ const startServer = async () => {
   try {
     logger.info("Starting SafeKey backend...");
 
-    // Check database connection
     await checkDbConnection();
 
-    // Check redis connection (Upstash)
     await checkRedisConnection();
 
     app.listen(env.PORT, () => {

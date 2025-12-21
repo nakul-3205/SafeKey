@@ -15,6 +15,13 @@
       "when": 1766036058039,
       "tag": "0001_burly_shen",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1766217118600,
+      "tag": "0002_brave_madame_masque",
+      "breakpoints": true
     }
   ]
 }

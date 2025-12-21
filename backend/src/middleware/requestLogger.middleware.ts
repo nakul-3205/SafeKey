@@ -1,4 +1,4 @@
-// src/middlewares/requestLogger.ts
+// src/middlewares/requestLogger.middleware.ts
 import { Request, Response, NextFunction } from "express";
 import { logger } from "../utils/logger";
 
