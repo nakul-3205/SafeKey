@@ -1,7 +1,7 @@
 // src/middleware/errorHandler.middleware.ts
 import { Request, Response, NextFunction } from "express";
 import { ApiError } from "../utils/apiError";
-import { logger, loggerError } from "../utils/logger";
+import { logger } from "../utils/logger";
 import { ERROR_CODES } from "../utils/errorCodes";
 
 export const errorMiddleware = (
@@ -11,7 +11,7 @@ export const errorMiddleware = (
   _next: NextFunction
 ) => {
   // Log the error
-  loggerError(err, "Error occurred");
+  logger.error(err, "Error occurred");
 
   // Handle ApiError
   if (err instanceof ApiError) {

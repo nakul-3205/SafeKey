@@ -1,10 +1,12 @@
-// src/utils/logger.ts
+
 import pino from "pino";
 
 const isProd = process.env.NODE_ENV === "production";
 
 export const logger = pino({
   level: process.env.LOG_LEVEL || "info",
+
+  errorKey: "err",
 
   transport: isProd
     ? undefined
@@ -17,28 +19,7 @@ export const logger = pino({
         },
       },
 
-
   serializers: {
     err: pino.stdSerializers.err,
   },
 });
-
-
-export const loggerError = (error: unknown, message?: string) => {
-  if (error instanceof Error) {
-    logger.error(
-      {
-        err: error,
-        stack: error.stack,
-      },
-      message || error.message
-    );
-  } else {
-    logger.error(
-      {
-        err: error,
-      },
-      message || "Unknown error"
-    );
-  }
-};

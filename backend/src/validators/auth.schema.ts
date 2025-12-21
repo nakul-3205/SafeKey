@@ -55,7 +55,8 @@ export const forgotPasswordSchema = z.object({
 
 // Reset password validation
 export const resetPasswordSchema = z.object({
-        token: tokenSchema,
+        email: emailSchema,
+        otp: otpSchema,
         newPassword: passwordSchema,
 });
 
