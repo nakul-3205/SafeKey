@@ -1,4 +1,3 @@
-
 export class ApiResponse<T = unknown> {
   public statusCode: number;
   public data: T;

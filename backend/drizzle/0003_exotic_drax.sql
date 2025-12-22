@@ -1,0 +1,1 @@
+ALTER TABLE "vault_passwords" ADD COLUMN "encryptionVerstion" smallint DEFAULT 1 NOT NULL;

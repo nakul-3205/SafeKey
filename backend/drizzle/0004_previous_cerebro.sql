@@ -1,0 +1,1 @@
+ALTER TABLE "vault_passwords" RENAME COLUMN "encryptionVerstion" TO "encryptionVersion";

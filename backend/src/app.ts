@@ -3,6 +3,7 @@ import cors from "cors";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 import authRoutes from "./routes/auth.routes";
+import passwordRoutes from './routes/password.routes'
 import { requestLogger } from "./middleware/requestLogger.middleware";
 import { errorMiddleware } from "./middleware/errorHandlermiddleware";
 import { logger } from "./utils/logger";
@@ -43,7 +44,7 @@ app.get("/api/health", (_req, res) => {
 });
 
 app.use("/api/auth", authLimiter, authRoutes);
-
+app.use("/api/vault",limiter,passwordRoutes)
 app.use((_req, res) => {
 
   res.status(404).json({
