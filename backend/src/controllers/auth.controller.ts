@@ -10,7 +10,7 @@ import {
   ForgotPasswordInput,
   ResetPasswordInput,
   RefreshTokenInput,
-} from "../validators/auth.schema";
+} from "../validators/auth.validator";
 
 const authService = new AuthService();
 

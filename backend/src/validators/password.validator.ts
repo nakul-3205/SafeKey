@@ -45,7 +45,7 @@ export const deletePasswordParamsSchema = z.object({
 });
 
 export const getPasswordParamsSchema = z.object({
-  id: z.string().uuid("Invalid password ID"),
+  id: z.string().uuid("Invalid ID"),
 });
 
 export type CreatePasswordInput = z.infer<typeof createPasswordSchema>;

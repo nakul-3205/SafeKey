@@ -14,7 +14,13 @@ import { aw } from "@upstash/redis/zmscore-DhpQcqpW";
 interface AuthTokens {
     accessToken: string;
     refreshToken: string;
+    userId:string;
 }
+interface AuthToken {
+  accessToken: string;
+  refreshToken: string;
+}
+
 
 export class AuthService {
     //Signup
@@ -121,7 +127,12 @@ export class AuthService {
 
             logger.info({ user_id: user.user_id, email }, "Email verified successfully, user auto-logged in");
 
-            return { accessToken, refreshToken };
+            // return { accessToken, refreshToken ,user:{user_id:user.user_id}};
+            return { 
+              accessToken,
+              refreshToken,
+              userId: user.user_id,
+            };
     }
 
     async login(email:string,password:string){
@@ -175,11 +186,16 @@ export class AuthService {
   
       logger.info({ user_id: user.user_id, email }, "User logged in");
   
-      return { accessToken, refreshToken };
+      // return { accessToken, refreshToken };
+      return { 
+        accessToken,
+        refreshToken,
+        userId: user.user_id,
+      };
     }
     
     
-    async refreshToken(refreshToken: string): Promise<AuthTokens> {
+    async refreshToken(refreshToken: string): Promise<AuthToken> {
         // Verify refresh token
         const payload = verifyRefreshToken(refreshToken);
     

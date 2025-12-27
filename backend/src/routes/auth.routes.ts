@@ -11,7 +11,7 @@ import {
   forgotPasswordSchema,
   resetPasswordSchema,
   refreshTokenSchema,
-} from "../validators/auth.schema";
+} from "../validators/auth.validator";
 
 const router = Router();
 const authController = new AuthController();

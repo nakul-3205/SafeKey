@@ -6,7 +6,7 @@ import { asyncHandler } from "../utils/asyncHandler";
 import {
 CreatePasswordInput,
 UpdatePasswordInput,
-} from "../validators/password.schema";
+} from "../validators/password.validator";
 
 const vaultService = new VaultService();
 
@@ -52,23 +52,8 @@ async (req: Request, res: Response, _next: NextFunction) => {
 }
 );
 
-// GET /api/vault/passwords/:id
-getPassword = asyncHandler(
-async (
-    req: Request<{ id: string }>,
-    res: Response,
-    _next: NextFunction
-) => {
-    const userId = req.user!.user_id;
-    const { id } = req.params;
 
-    const password = await vaultService.getPassword(userId, id);
 
-    res.status(200).json(
-    new ApiResponse(200, password, "Password retrieved successfully")
-    );
-}
-);
 
 // PUT /api/vault/passwords/:id
 updatePassword = asyncHandler(

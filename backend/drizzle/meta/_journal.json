@@ -43,6 +43,13 @@
       "when": 1766305344166,
       "tag": "0005_dusty_dreadnoughts",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1766582719809,
+      "tag": "0006_tricky_guardian",
+      "breakpoints": true
     }
   ]
 }

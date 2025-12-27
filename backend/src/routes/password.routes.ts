@@ -8,7 +8,7 @@ import {
   updatePasswordSchema,
   deletePasswordParamsSchema,
   getPasswordParamsSchema,
-} from "../validators/password.schema";
+} from "../validators/password.validator";
 
 const router = Router();
 const vaultController = new VaultController();
@@ -29,12 +29,7 @@ router.post(
 // GET /api/vault/passwords - Get all passwords
 router.get("/passwords", vaultController.getAllPasswords);
 
-// GET /api/vault/passwords/:id - Get a single password
-router.get(
-  "/passwords/:id",
-  validate(getPasswordParamsSchema, "params"),
-  vaultController.getPassword
-);
+
 
 // PUT /api/vault/passwords/:id - Update a password
 router.put(

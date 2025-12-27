@@ -82,36 +82,36 @@ export class VaultService {
     }
 
     // Get a single password
-    async getPassword(userId: string, passwordId: string) {
-    const [row] = await db
-        .select({
-        id: vaultPasswords.id,
-        name: vaultPasswords.name,
-        ciphertext: vaultPasswords.ciphertext,
-        iv: vaultPasswords.iv,
-        auth_tag: vaultPasswords.auth_tag,
-        hibp_sha1_prefix: vaultPasswords.hibp_sha1_prefix,
-        created_at: vaultPasswords.created_at,
-        updated_at: vaultPasswords.updated_at,
-        })
-        .from(vaultPasswords)
-        .where(
-        and(
-            eq(vaultPasswords.id, passwordId),
-            eq(vaultPasswords.user_id, userId)
-        )
-        );
+    // async getPassword(userId: string, passwordId: string) {
+    // const [row] = await db
+    //     .select({
+    //     id: vaultPasswords.id,
+    //     name: vaultPasswords.name,
+    //     ciphertext: vaultPasswords.ciphertext,
+    //     iv: vaultPasswords.iv,
+    //     auth_tag: vaultPasswords.auth_tag,
+    //     hibp_sha1_prefix: vaultPasswords.hibp_sha1_prefix,
+    //     created_at: vaultPasswords.created_at,
+    //     updated_at: vaultPasswords.updated_at,
+    //     })
+    //     .from(vaultPasswords)
+    //     .where(
+    //     and(
+    //         eq(vaultPasswords.id, passwordId),
+    //         eq(vaultPasswords.user_id, userId)
+    //     )
+    //     );
 
-    if (!row) {
-        throw new ApiError(
-        404,
-        "Password not found",
-        ERROR_CODES.NOT_FOUND
-        );
-    }
+    // if (!row) {
+    //     throw new ApiError(
+    //     404,
+    //     "Password not found",
+    //     ERROR_CODES.NOT_FOUND
+    //     );
+    // }
 
-    return row;
-    }
+    // return row;
+    // }
 
     // Update a password
     async updatePassword(
