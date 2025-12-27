@@ -45,8 +45,8 @@ app.get("/api/health", (_req, res) => {
 });
 
 app.use("/api/auth", authLimiter, authRoutes);
-app.use("/api/vault",limiter,passwordRoutes);
-app.use("/api/vault/salt",limiter,saltroutes);
+app.use("/api/vault",passwordRoutes);
+app.use("/api/vault/salt",saltroutes);
 app.use("/api/vault/emails", emailRoutes)
 
 app.use((_req, res) => {
